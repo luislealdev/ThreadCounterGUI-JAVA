@@ -15,7 +15,7 @@ public class HelloController {
     protected void onStartButtonClick() {
         startCounter1(ThreadLocalRandom.current().nextInt(1,20));
         startCounter2(ThreadLocalRandom.current().nextInt(1,20));
-        startCounter3();
+        startCounter3(20);
     }
 
     private void startCounter1(int counterLimit) {
@@ -48,11 +48,9 @@ public class HelloController {
         }, "Thread Counter 2").start();
     }
 
-    private void startCounter2() {
-
-    }
-
-    private void startCounter3() {
-
+    private void startCounter3(int counterLimit) {
+        Counter3 counter = new Counter3(counterLimit);
+        counter3.textProperty().bind(counter.counterProperty());
+        counter.start();
     }
 }

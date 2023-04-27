@@ -1,5 +1,6 @@
 package luisrrleal.com.threadcounterjava;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -20,8 +21,8 @@ public class Counter3 extends Thread {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
-            setCounter(i+"/"+counterLimit);
+            int finalI = i;
+            Platform.runLater(()->setCounter(finalI +" / "+counterLimit));
         }
     }
 
